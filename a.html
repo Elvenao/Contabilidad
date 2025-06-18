@@ -1,0 +1,48 @@
+<style>
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+  }
+  .header-buttons {
+    display: flex;
+  }
+  .header-buttons button {
+    border: 1px solid black;
+    padding: 8px 12px;
+    background-color: white;
+    cursor: pointer;
+  }
+  .header-buttons button:first-child {
+    background-color: #888;
+    color: white;
+  }
+</style>
+
+<!-- Contenedor de botones sobre la tabla -->
+<div class="header-buttons">
+  <button>ButtonSelect</button>
+  <button>Button</button>
+  <button>Button</button>
+  <button>Button</button>
+</div>
+
+<!-- Tabla con encabezado y varias filas -->
+<table>
+  <thead>
+    <tr>
+      <th colspan="2"> </th>
+      <th colspan="2"> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td></tr>
+  </tbody>
+</table>

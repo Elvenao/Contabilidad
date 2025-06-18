@@ -1,0 +1,38 @@
+.inputs {
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 10px; /* 🔴 Bordes redondeados */
+  outline: none;
+  width: 100%;
+  text-align: center;
+}
+html{
+    font-family: Arial, sans-serif;
+}
+
+.cedulas button {
+    margin: 0;
+    border-radius: 0;
+    border: none;
+    width: 17vw;          
+    white-space: nowrap;    
+    overflow: hidden;       
+    text-overflow: ellipsis;
+    font-size: small;
+    background-color: #ccc;
+}
+
+.cedulas {
+    display: inline-flex;   
+}
+
+.headers{
+    text-align: center;
+}
+
+#buttonCalcular{
+    margin-top: 4vh;
+    margin-left: 4vw;
+}
+
+
