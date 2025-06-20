@@ -1,10 +1,11 @@
 let cedula7_campo1 = ['cedula7MPD1', 'cedula7MPD2', 'cedula7MPD3']
 let cedula7_campo2 = ['cedula7MOD1', 'cedula7MOD2', 'cedula7MOD3']
 let cedula7_campo3 = ['cedula7CI1', 'cedula7CI2', 'cedula7CI3']
+let cedula7_campo4 = ['cedula7SP1', 'cedula7SP2', 'cedula7SP3']
 let cedula7_nullAux = ['cedula7null1', 'cedula7null2', 'cedula7null3', 'cedula7null4', 'cedula7null5']
-let cedula7_nullAux1 = ['cedula70a1', 'cedula70a2', 'cedula70a3']
-let cedula7_nullAux2 = ['cedula70b1', 'cedula70b2', 'cedula70b3']
-let cedula7_nullAux3 = ['cedula70c1', 'cedula70c2', 'cedula70c3']
+let cedula7_nullAux1 = ['cedula701a1', 'cedula701a2', 'cedula701a3']
+let cedula7_nullAux2 = ['cedula701b1', 'cedula701b2', 'cedula701b3']
+let cedula7_nullAux3 = ['cedula701c1', 'cedula701c2', 'cedula701c3']
 
 
 function CedulaVII(){
@@ -36,8 +37,9 @@ function CedulaVII(){
             <tr>
                 <td>
                     <select class="inputs cedula7_mySelected" id="cedula7_Select1" name="">
-                        <option value="0a">Seleccionar</option>
+                        <option value="01a">Seleccionar</option>
                         <option selected value="MPD">MPD</option>
+                        <option value="SP">Semiproducto</option>
                         <option value="MOD">MOD</option>
                         <option value="CI">CI</option>
                     </select>
@@ -55,9 +57,31 @@ function CedulaVII(){
             </tr>
             <tr>
                 <td>
-                    <select class="inputs cedula7_mySelected" id="cedula7_Select2" name="">
-                        <option value="0b">Seleccionar</option>
+                    <select class="inputs cedula7_mySelected" id="cedula7_Select4" name="">
+                        <option value="01d">Seleccionar</option>
                         <option value="MPD">MPD</option>
+                        <option selected value="SP">Semiproducto</option>
+                        <option value="MOD">MOD</option>
+                        <option value="CI">CI</option>
+                    </select>
+                </td>
+                <td>
+                    <input class="inputs cedula7_4" placeholder="Escribe algo" type="number"  readonly>
+                </td>
+                <td>
+                    <input class="inputs cedula7_4" placeholder="Escribe algo" type="number"  readonly>
+                </td>
+                <td>
+                    <input class="inputs cedula7_4" placeholder="Escribe algo" type="number"  readonly>
+                </td>
+                
+            </tr>
+            <tr>
+                <td>
+                    <select class="inputs cedula7_mySelected" id="cedula7_Select2" name="">
+                        <option value="01b">Seleccionar</option>
+                        <option value="MPD">MPD</option>
+                        <option value="SP">Semiproducto</option>
                         <option selected value="MOD">MOD</option>
                         <option value="CI">CI</option>
                     </select>
@@ -76,8 +100,9 @@ function CedulaVII(){
             <tr>
                 <td>
                     <select class="inputs cedula7_mySelected" id="cedula7_Select3" name="">
-                        <option value="0c">Seleccionar</option>
+                        <option value="01c">Seleccionar</option>
                         <option value="MPD">MPD</option>
+                        <option value="SP">Semiproducto</option>
                         <option value="MOD">MOD</option>
                         <option selected value="CI">CI</option>
                     </select>
@@ -126,7 +151,7 @@ function CedulaVII(){
         localStorage.setItem(select.id, select.value)
         values = Array.from(selects).map(s => s.value);
         [...select.options].forEach(option =>{
-            if(values.includes(option.value) && option.value != '0a' && option.value != '0b' && option.value != '0c' && !select.value.includes(option.value)){
+            if(values.includes(option.value) && option.value != '01a' && option.value != '01b' && option.value != '01c' && option.value != '01d' && !select.value.includes(option.value)){
                 option.disabled = true
             }
             else{
@@ -137,6 +162,7 @@ function CedulaVII(){
         cedula7_asignCampo(cedula7_campo1,"cedula7_Select1",".cedula7_1")
         cedula7_asignCampo(cedula7_campo2,"cedula7_Select2",".cedula7_2")
         cedula7_asignCampo(cedula7_campo3,"cedula7_Select3",".cedula7_3")
+        cedula7_asignCampo(cedula7_campo4,"cedula7_Select4",".cedula7_4")
         cedula7_CalculateTotal()
         
         select.addEventListener('change',()=>{
@@ -153,7 +179,7 @@ function CedulaVII(){
             values = Array.from(selects).map(s => s.value)
             document.querySelectorAll(".cedula7_mySelected").forEach(element =>{
                 [...element.options].forEach(option =>{
-                    if(values.includes(option.value) && option.value != '0' && !element.value.includes(option.value)){
+                    if(values.includes(option.value) && option.value != '01a' && option.value != '01b' && option.value != '01c' && option.value != '01d' && !element.value.includes(option.value)){
                         option.disabled = true
                     }
                     else{
@@ -165,6 +191,7 @@ function CedulaVII(){
             cedula7_asignCampo(cedula7_campo1,"cedula7_Select1",".cedula7_1")
             cedula7_asignCampo(cedula7_campo2,"cedula7_Select2",".cedula7_2")
             cedula7_asignCampo(cedula7_campo3,"cedula7_Select3",".cedula7_3")
+            cedula7_asignCampo(cedula7_campo4,"cedula7_Select4",".cedula7_4")
             cedula7_CalculateTotal()
             
             
@@ -189,13 +216,13 @@ function cedula7_asignCampo(campo,Select,campoClass){
             element.setAttribute("id",campo[j])
             if(!cedula7_nullAux1.includes(campo[0]) && !cedula7_nullAux2.includes(campo[0]) && !cedula7_nullAux3.includes(campo[0])){
                 if(j == 0){
-                    element.value = localStorage.getItem("cedula1"+ document.getElementById(Select).value + "3")
+                    element.value = localStorage.getItem("cedula5"+ document.getElementById(Select).value + "3")
                     
                 }else if(j == 1){
-                    element.value = localStorage.getItem("cedula2"+ document.getElementById(Select).value + "5")
+                    element.value = localStorage.getItem("cedula6"+ document.getElementById(Select).value + "5")
                 }else{
-                    element.value = Number(localStorage.getItem("cedula1"+ document.getElementById(Select).value + "3")) * Number(localStorage.getItem("cedula2"+ document.getElementById(Select).value + "5"))
-                    localStorage.setItem(element.id, Number(localStorage.getItem("cedula1"+ document.getElementById(Select).value + "3")) * Number(localStorage.getItem("cedula2"+ document.getElementById(Select).value + "5")) )
+                    element.value = Number(localStorage.getItem("cedula5"+ document.getElementById(Select).value + "3")) * Number(localStorage.getItem("cedula6"+ document.getElementById(Select).value + "5"))
+                    localStorage.setItem(element.id, Number(localStorage.getItem("cedula5"+ document.getElementById(Select).value + "3")) * Number(localStorage.getItem("cedula6"+ document.getElementById(Select).value + "5")) )
                 }
             }else{
                 element.value = ''
@@ -221,9 +248,11 @@ function cedula7_CalculateTotal(){
     let monto1 = localStorage.getItem(cedula7_campo1[2])
     let monto2 = localStorage.getItem(cedula7_campo2[2])
     let monto3 = localStorage.getItem(cedula7_campo3[2])
+    let monto4 = localStorage.getItem(cedula7_campo4[2])
     let resultado
     resultado = !isNaN(monto1) ? Number(monto1) : 0
     resultado += !isNaN(monto2) ? Number(monto2) : 0 
     resultado += !isNaN(monto3) ? Number(monto3) : 0
+    resultado += !isNaN(monto4) ? Number(monto4) : 0
     document.getElementById("cedula7Total").value =  resultado
 }

@@ -32,7 +32,18 @@ function CedulaIV(){
         </tbody>
     </table>`
     
-    let unidadesTerminadas = localStorage.getItem("cedula1MPD4") == null ? 0 : localStorage.getItem("cedula1MPD4")
+    const keys = ["cedula1MPD4", "cedula1MOD4", "cedula1CI4"];
+    let unidadesTerminadas = "0";
+
+    for (let key of keys) {
+        let val = localStorage.getItem(key);
+        if (val != null && val.trim() != "") {
+            unidadesTerminadas = val;
+            break;
+        }
+    }
+
+
     let costoUnitario = localStorage.getItem("cedula2Total5") == null ? 0 : localStorage.getItem("cedula2Total5")
     document.getElementById("unidadesTerminadas").value = unidadesTerminadas
     document.getElementById("costoUnitario").value = costoUnitario == "Infinity" ? 0 : costoUnitario

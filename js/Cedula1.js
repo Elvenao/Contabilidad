@@ -160,7 +160,7 @@ function CedulaI(){
             values = Array.from(selects).map(s => s.value)
             document.querySelectorAll(".mySelected").forEach(element =>{
                 [...element.options].forEach(option =>{
-                    if(values.includes(option.value) && option.value != '0' && !element.value.includes(option.value)){
+                    if(values.includes(option.value) && option.value != '0a' && option.value != '0b' && option.value != '0c' && !element.value.includes(option.value)){
                         option.disabled = true
                     }
                     else{
@@ -208,8 +208,8 @@ function onInput(campo){
             const field4 = document.getElementById(campo[3]).value
             let  field5 = document.getElementById(campo[4])
             if(field1 != null && field2 != null){
-                field3.value = (field1 * field2).toFixed(4)
-                localStorage.setItem(campo[2], Math.floor(field1 * field2))
+                field3.value = formatNumber(field1 * field2)
+                localStorage.setItem(campo[2], formatNumber(field1 * field2))
             }else field3.value = '-'
 
             if(field3 != '-' && field4 != null){
@@ -237,7 +237,7 @@ function onInputRefresh(campo){
     const field4 = document.getElementById(campo[3]).value
     let  field5 = document.getElementById(campo[4])
     if(field1 != null && field2 != null){
-        field3.value = field1 * field2
+        field3.value = formatNumber(field1 * field2)
     }else field3.value = '-'
 
     if(field3 != '-' && field4 != null){

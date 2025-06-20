@@ -1,6 +1,7 @@
 let cedula6_campo1 = ['cedula6MPD1', 'cedula6MPD2', 'cedula6MPD3', 'cedula6MPD4', 'cedula6MPD5']
 let cedula6_campo2 = ['cedula6MOD1', 'cedula6MOD2', 'cedula6MOD3', 'cedula6MOD4', 'cedula6MOD5']
 let cedula6_campo3 = ['cedula6CI1', 'cedula6CI2', 'cedula6CI3', 'cedula6CI4', 'cedula6CI5']
+let cedula6_campo4 = ['cedula6SP1', 'cedula6SP2', 'cedula6SP3', 'cedula6SP4', 'cedula6SP5']
 let cedula6_total = ['cedula6Total1', 'cedula6Total2', 'cedula6Total3', 'cedula6Total4', 'cedula6Total5']
 let cedula6_nullAux = ['cedula6null1', 'cedula6null2', 'cedula6null3', 'cedula6null4', 'cedula6null5']
 let cedula6_nullAux1 = ['cedula60a1', 'cedula60a2', 'cedula60a3', 'cedula60a4', 'cedula60a5']
@@ -34,106 +35,137 @@ function CedulaVI(){
             <td>Costo Unitario</td>
             </tr>
         </thead>
-        <tbody id="myTable2">
+        <tbody id="mainTable">
             <tr>
                 <td>
                     <select class="inputs cedula6_mySelected" id="cedula6_Select1" name="">
-                        <option value="0a">Seleccionar</option>
+                        <option value="01a">Seleccionar</option>
                         <option selected value="MPD">MPD</option>
+                        <option value="SP">Semiproducto</option>
                         <option value="MOD">MOD</option>
                         <option value="CI">CI</option>
                     </select>
                 </td>
                 <td>
-                    <input class="inputs cedula6_1" placeholder="Escribe algo" type="number" onkeydown="if(event.key === '-' || event.key === 'e'){event.preventDefault();}">
+                    <input class="inputs cedula6_1" placeholder="Escribe algo" type="number" id="campo" min="0" step="any" onkeydown="if(event.key === '-' || event.key === 'e'){event.preventDefault();}">
                 </td>
                 <td>
-                    <input class="inputs cedula6_1" placeholder="Escribe algo" type="number" onkeydown="if(event.key === '-' || event.key === 'e'){event.preventDefault();}">
+                    <input class="inputs cedula6_1" placeholder="Escribe algo" type="number" id="campo" min="0" step="any" onkeydown="if(event.key === '-' || event.key === 'e'){event.preventDefault();}">
                 </td>
                 <td>
-                    <input class="inputs cedula6_1" placeholder="Escribe algo" type="number"  readonly>
+                    <input  class="inputs cedula6_1" id="campo" value="-" readonly>
                 </td>
                 <td>
-                    <input class="inputs cedula6_1" placeholder="Escribe algo" type="number" readonly>
+                    <input class="inputs cedula6_1" id="campo" value="-" readonly>
                 </td>
                 <td>
-                    <input class="inputs cedula6_1" placeholder="Escribe algo" type="number" readonly>
+                    <input class="inputs cedula6_1" id="campo" value="-" readonly>
+                </td>
+                
+            </tr>
+            <tr>
+                <td>
+                    <select class="inputs cedula6_mySelected" id="cedula6_Select4" name="">
+                        <option value="01d">Seleccionar</option>
+                        <option value="MPD">MPD</option>
+                        <option selected value="SP">Semiproducto</option>
+                        <option value="MOD">MOD</option>
+                        <option value="CI">CI</option>
+                    </select>
+                </td>
+                <td>
+                    <input class="inputs cedula6_4" placeholder="Escribe algo" type="number" id="campo" min="0" step="any" onkeydown="if(event.key === '-' || event.key === 'e'){event.preventDefault();}">
+                </td>
+                <td>
+                    <input class="inputs cedula6_4" placeholder="Escribe algo" type="number" id="campo" min="0" step="any" onkeydown="if(event.key === '-' || event.key === 'e'){event.preventDefault();}">
+                </td>
+                <td>
+                    <input  class="inputs cedula6_4" id="campo" value="-" readonly>
+                </td>
+                <td>
+                    <input class="inputs cedula6_4" placeholder="Escribe algo" type="number" id="campo" value="-" readonly>
+                </td>
+                <td>
+                    <input class="inputs cedula6_4" id="campo" value="-" readonly>
                 </td>
                 
             </tr>
             <tr>
                 <td>
                     <select class="inputs cedula6_mySelected" id="cedula6_Select2" name="">
-                        <option value="0b">Seleccionar</option>
+                        <option value="01b">Seleccionar</option>
                         <option value="MPD">MPD</option>
+                        <option value="SP">Semiproducto</option>
                         <option selected value="MOD">MOD</option>
                         <option value="CI">CI</option>
                     </select>
                 </td>
                 <td>
-                    <input class="inputs cedula6_2" placeholder="Escribe algo" type="number" onkeydown="if(event.key === '-' || event.key === 'e'){event.preventDefault();}">
+                    <input class="inputs cedula6_2" placeholder="Escribe algo" type="number" id="campo" min="0" step="any" onkeydown="if(event.key === '-' || event.key === 'e'){event.preventDefault();}">
                 </td>
                 <td>
-                    <input class="inputs cedula6_2" placeholder="Escribe algo" type="number" onkeydown="if(event.key === '-' || event.key === 'e'){event.preventDefault();}">
+                    <input class="inputs cedula6_2" placeholder="Escribe algo" type="number" id="campo" min="0" max="1" step="any" onkeydown="if(event.key === '-' || event.key === 'e'){event.preventDefault();}">
                 </td>
                 <td>
-                    <input class="inputs cedula6_2" placeholder="Escribe algo" type="number" readonly>
+                    <input class="inputs cedula6_2" id="campo" value="-" readonly>
                 </td>
                 <td>
-                    <input class="inputs cedula6_2" placeholder="Escribe algo" type="number" readonly>
+                    <input class="inputs cedula6_2" placeholder="Escribe algo" type="number" id="campo" value="-" readonly>
                 </td>
                 <td>
-                    <input class="inputs cedula6_2" placeholder="Escribe algo" type="number" readonly>
+                    <input class="inputs cedula6_2" id="campo" value="-" readonly>
                 </td>
                 
             </tr>
             <tr>
                 <td>
                     <select class="inputs cedula6_mySelected" id="cedula6_Select3" name="">
-                        <option value="0c">Seleccionar</option>
+                        <option value="01c">Seleccionar</option>
                         <option value="MPD">MPD</option>
+                        <option value="SP">Semiproducto</option>
                         <option value="MOD">MOD</option>
                         <option selected value="CI">CI</option>
                     </select>
                 </td>
                 <td>
-                    <input class="inputs cedula6_3" placeholder="Escribe algo" type="number" onkeydown="if(event.key === '-' || event.key === 'e'){event.preventDefault();}">
+                    <input class="inputs cedula6_3" placeholder="Escribe algo" type="number" id="campo" min="0" step="any" onkeydown="if(event.key === '-' || event.key === 'e'){event.preventDefault();}">
                 </td>
                 <td>
-                    <input class="inputs cedula6_3" placeholder="Escribe algo" type="number" onkeydown="if(event.key === '-' || event.key === 'e'){event.preventDefault();}">
+                    <input class="inputs cedula6_3" placeholder="Escribe algo" type="number" id="campo" min="0" max="1" step="any"  onkeydown="if(event.key === '-' || event.key === 'e'){event.preventDefault();}">
                 </td>
                 <td>
-                    <input class="inputs cedula6_3" placeholder="Escribe algo" type="number" readonly>
+                    <input class="inputs cedula6_3" id="campo" value="-" readonly>
                 </td>
                 <td>
-                    <input class="inputs cedula6_3" placeholder="Escribe algo" type="number" readonly>
+                    <input class="inputs cedula6_3" placeholder="Escribe algo" type="number" id="campo" value="-" readonly>
                 </td>
                 <td>
-                    <input class="inputs cedula6_3" placeholder="Escribe algo" type="number" readonly>
+                    <input class="inputs cedula6_3" id="campo" value="-" readonly>
                 </td>
                 
             </tr>
             <tr>
                 <td>
-                    <input class='inputs cedula6_4' placeholder="Totales" type="number" readonly>
+                    <input class='inputs cedula6_5' placeholder="Totales" type="number" readonly>
                 </td>
                 <td>
-                    <input class='inputs cedula6_4' id="cedula6Total1" placeholder="Total" type="number"  readonly>
+                    <input class='inputs cedula6_5' id="cedula6Total1" placeholder="Total" type="number"  readonly>
                 </td>
                 <td>
-                    <input class='inputs cedula6_4' id="cedula6Total2" placeholder="Total" type="number" readonly>
+                    <input class='inputs cedula6_5' id="cedula6Total2" placeholder="Total" type="number" readonly>
                 </td>
                 <td>
-                    <input class='inputs cedula6_4' id="cedula6Total3" placeholder="Total" type="number" readonly>
+                    <input class='inputs cedula6_5' id="cedula6Total3" placeholder="Total" type="number" readonly>
                 </td>
                 <td>
-                    <input class='inputs cedula6_4' value="-" id="cedula6Total4" placeholder="-" type="number" readonly>
+                    <input class='inputs cedula6_5' value="-" id="cedula6Total4" placeholder="-" type="number" readonly>
                 </td>
                 <td>
-                    <input class='inputs cedula6_4' id="cedula6Total5" placeholder="Total" type="number" readonly>
+                    <input class='inputs cedula6_5' id="cedula6Total5" placeholder="Total" type="number" readonly>
                 </td>
                 
             </tr>
+            
         </tbody>
     </table>`
 
@@ -158,7 +190,7 @@ function CedulaVI(){
         localStorage.setItem(select.id, select.value)
         values = Array.from(selects).map(s => s.value);
         [...select.options].forEach(option =>{
-            if(values.includes(option.value) && option.value != '0a' && option.value != '0b' && option.value != '0c' && !select.value.includes(option.value)){
+            if(values.includes(option.value) && option.value != '01a' && option.value != '01b' && option.value != '01c' && option.value != '01d' && !select.value.includes(option.value)){
                 option.disabled = true
             }
             else{
@@ -168,6 +200,7 @@ function CedulaVI(){
         cedula6_asignCampo(cedula6_campo1,"cedula6_Select1",".cedula6_1")
         cedula6_asignCampo(cedula6_campo2,"cedula6_Select2",".cedula6_2")
         cedula6_asignCampo(cedula6_campo3,"cedula6_Select3",".cedula6_3")
+        cedula6_asignCampo(cedula6_campo4,"cedula6_Select4",".cedula6_4")
         select.addEventListener('change',()=>{
             localStorage.setItem(select.id, select.value)
             select.querySelectorAll("option").forEach(opt => {
@@ -182,7 +215,7 @@ function CedulaVI(){
             values = Array.from(selects).map(s => s.value)
             document.querySelectorAll(".cedula6_mySelected").forEach(element =>{
                 [...element.options].forEach(option =>{
-                    if(values.includes(option.value) && option.value != '0' && !element.value.includes(option.value)){
+                    if(values.includes(option.value) && option.value != '01a' && option.value != '01b' && option.value != '01c' && option.value != '01d' && !element.value.includes(option.value)){
                         option.disabled = true
                     }
                     else{
@@ -193,15 +226,18 @@ function CedulaVI(){
             cedula6_asignCampo(cedula6_campo1,"cedula6_Select1",".cedula6_1")
             cedula6_asignCampo(cedula6_campo2,"cedula6_Select2",".cedula6_2")
             cedula6_asignCampo(cedula6_campo3,"cedula6_Select3",".cedula6_3")
+            cedula6_asignCampo(cedula6_campo4,"cedula6_Select4",".cedula6_4")
             cedula6_onInputRefresh(cedula6_campo1,"cedula6_Select1")
             cedula6_onInputRefresh(cedula6_campo2,"cedula6_Select2")
             cedula6_onInputRefresh(cedula6_campo3,"cedula6_Select3")
+            cedula6_onInputRefresh(cedula6_campo4,"cedula6_Select4")
             
         })
         if(localStorage.getItem("cedula6_Select1") != null){
             cedula6_onRefresh(cedula6_campo1)
             cedula6_onRefresh(cedula6_campo2)
             cedula6_onRefresh(cedula6_campo3)
+            cedula6_onRefresh(cedula6_campo4)
         }
     })
 
@@ -212,15 +248,17 @@ function CedulaVI(){
     cedula6_onInputRefresh(cedula6_campo1,"cedula6_Select1")
     cedula6_onInputRefresh(cedula6_campo2,"cedula6_Select2")
     cedula6_onInputRefresh(cedula6_campo3,"cedula6_Select3")
+    cedula6_onInputRefresh(cedula6_campo4,"cedula6_Select4")
 
     
     cedula6_onInput(cedula6_campo1,"cedula6_Select1")
     cedula6_onInput(cedula6_campo2,"cedula6_Select2")
     cedula6_onInput(cedula6_campo3,"cedula6_Select3")
+    cedula6_onInput(cedula6_campo4,"cedula6_Select4")
 }
 
 function cedula6_onInput(campo,Select){
-    let UnidadesTerminadas = localStorage.getItem("cedula1"+document.getElementById(Select).value+"5")
+    let UnidadesTerminadas = localStorage.getItem("cedula5"+document.getElementById(Select).value+"5")
     campo.forEach(element =>{
         document.getElementById(element).addEventListener('input', () =>{
             const field1 = document.getElementById(campo[0]).value
@@ -251,6 +289,7 @@ function cedula6_onInput(campo,Select){
 
 
 function cedula6_onInputRefresh(campo,Select){
+    console.log(document.getElementById(Select).value)
     let UnidadesTerminadas = localStorage.getItem("cedula5"+document.getElementById(Select).value+"5")
     const field1 = document.getElementById(campo[0]).value
     const field2 = document.getElementById(campo[1]).value
@@ -285,10 +324,12 @@ function cedula6_calculateTotales(){
         let monto1 = localStorage.getItem(cedula6_campo1[i])
         let monto2 = localStorage.getItem(cedula6_campo2[i])
         let monto3 = localStorage.getItem(cedula6_campo3[i])
+        let monto4 = localStorage.getItem(cedula6_campo4[i])
         if(element != "cedula6Total4"){
             resultado = !isNaN(monto1) ? Number(monto1) : 0
             resultado += !isNaN(monto2) ? Number(monto2) : 0 
             resultado += !isNaN(monto3) ? Number(monto3) : 0
+            resultado += !isNaN(monto4) ? Number(monto4) : 0
             document.getElementById(element).value =  resultado
             localStorage.setItem(element,resultado)
         }

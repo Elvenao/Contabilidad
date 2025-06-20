@@ -3,10 +3,10 @@ let proceso2_cedula5_campo2 = ['cedula5MOD1', 'cedula5MOD2', 'cedula5MOD3', 'ced
 let proceso2_cedula5_campo3 = ['cedula5CI1', 'cedula5CI2', 'cedula5CI3', 'cedula5CI4', 'cedula5CI5']
 let proceso2_cedula5_campo4 = ['cedula5SP1', 'cedula5SP2', 'cedula5SP3', 'cedula5SP4', 'cedula5SP5']
 let proceso2_cedula5_nullAux = ['cedula5null1', 'cedula5null2', 'cedula5null3', 'cedula5null4', 'cedula5null5']
-let proceso2_cedula5_nullAux1 = ['cedula50a1', 'cedula50a2', 'cedula50a3', 'cedula50a4', 'cedula50a5']
-let proceso2_cedula5_nullAux2 = ['cedula50b1', 'cedula50b2', 'cedula50b3', 'cedula50b4', 'cedula50b5']
-let proceso2_cedula5_nullAux3 = ['cedula50c1', 'cedula50c2', 'cedula50c3', 'cedula50c4', 'cedula50c5']
-let proceso2_cedula5_nullAux4 = ['cedula50d1', 'cedula50d2', 'cedula50d3', 'cedula50d4', 'cedula50d5']
+let proceso2_cedula5_nullAux1 = ['cedula501a1', 'cedula501a2', 'cedula501a3', 'cedula501a4', 'cedula501a5']
+let proceso2_cedula5_nullAux2 = ['cedula501b1', 'cedula501b2', 'cedula501b3', 'cedula501b4', 'cedula501b5']
+let proceso2_cedula5_nullAux3 = ['cedula501c1', 'cedula501c2', 'cedula501c3', 'cedula501c4', 'cedula501c5']
+let proceso2_cedula5_nullAux4 = ['cedula501d1', 'cedula501d2', 'cedula501d3', 'cedula501d4', 'cedula501d5']
 function CedulaV(){
     localStorage.setItem("currentCedulaProceso2", "CedulaV")
     let valuesProceso2
@@ -40,7 +40,7 @@ function CedulaV(){
             <tr>
                 <td>
                     <select class="inputs mySelected2" id="Proceso2_Select1" name="">
-                        <option value="0a">Seleccionar</option>
+                        <option value="01a">Seleccionar</option>
                         <option selected value="MPD">MPD</option>
                         <option value="SP">Semiproducto</option>
                         <option value="MOD">MOD</option>
@@ -67,7 +67,7 @@ function CedulaV(){
             <tr>
                 <td>
                     <select class="inputs mySelected2" id="Proceso2_Select4" name="">
-                        <option value="0d">Seleccionar</option>
+                        <option value="01d">Seleccionar</option>
                         <option value="MPD">MPD</option>
                         <option selected value="SP">Semiproducto</option>
                         <option value="MOD">MOD</option>
@@ -94,7 +94,7 @@ function CedulaV(){
             <tr>
                 <td>
                     <select class="inputs mySelected2" id="Proceso2_Select2" name="">
-                        <option value="0b">Seleccionar</option>
+                        <option value="01b">Seleccionar</option>
                         <option value="MPD">MPD</option>
                         <option value="SP">Semiproducto</option>
                         <option selected value="MOD">MOD</option>
@@ -121,7 +121,7 @@ function CedulaV(){
             <tr>
                 <td>
                     <select class="inputs mySelected2" id="Proceso2_Select3" name="">
-                        <option value="0c">Seleccionar</option>
+                        <option value="01c">Seleccionar</option>
                         <option value="MPD">MPD</option>
                         <option value="SP">Semiproducto</option>
                         <option value="MOD">MOD</option>
@@ -171,17 +171,17 @@ function CedulaV(){
         localStorage.setItem(select.id, select.value)
         values = Array.from(selects).map(s => s.value);
         [...select.options].forEach(option =>{
-            if(values.includes(option.value) && option.value != '0a' && option.value != '0b' && option.value != '0c' && option.value != '0d' && !select.value.includes(option.value)){
+            if(values.includes(option.value) && option.value != '01a' && option.value != '01b' && option.value != '01c' && option.value != '01d' && !select.value.includes(option.value)){
                 option.disabled = true
             }
             else{
                 option.disabled = false
             }
         })
-        asignCampo(proceso2_cedula5_campo1,"Proceso2_Select1",".Proceso2_campo1")
-        asignCampo(proceso2_cedula5_campo2,"Proceso2_Select2",".Proceso2_campo2")
-        asignCampo(proceso2_cedula5_campo3,"Proceso2_Select3",".Proceso2_campo3")
-        asignCampo(proceso2_cedula5_campo4,"Proceso2_Select3",".Proceso2_campo4")
+        CedulaV_asignCampo(proceso2_cedula5_campo1,"Proceso2_Select1",".Proceso2_campo1")
+        CedulaV_asignCampo(proceso2_cedula5_campo2,"Proceso2_Select2",".Proceso2_campo2")
+        CedulaV_asignCampo(proceso2_cedula5_campo3,"Proceso2_Select3",".Proceso2_campo3")
+        CedulaV_asignCampo(proceso2_cedula5_campo4,"Proceso2_Select4",".Proceso2_campo4")
         select.addEventListener('change',()=>{
             localStorage.setItem(select.id, select.value)
             select.querySelectorAll("option").forEach(opt => {
@@ -194,9 +194,9 @@ function CedulaV(){
 
 
             values = Array.from(selects).map(s => s.value)
-            document.querySelectorAll(".mySelected").forEach(element =>{
+            document.querySelectorAll(".mySelected2").forEach(element =>{
                 [...element.options].forEach(option =>{
-                    if(values.includes(option.value) && option.value != '0' && !element.value.includes(option.value)){
+                    if(values.includes(option.value) && option.value != '01a' && option.value != '01b' && option.value != '01c' && option.value != '01d' && !element.value.includes(option.value)){
                         option.disabled = true
                     }
                     else{
@@ -204,39 +204,54 @@ function CedulaV(){
                     }
                 })
             })
-            asignCampo(proceso2_cedula5_campo1,"Proceso2_Select1",".Proceso2_campo1")
-            asignCampo(proceso2_cedula5_campo2,"Proceso2_Select2",".Proceso2_campo2")
-            asignCampo(proceso2_cedula5_campo3,"Proceso2_Select3",".Proceso2_campo3")
-            asignCampo(proceso2_cedula5_campo4,"Proceso2_Select3",".Proceso2_campo4")
-            onInputRefresh(campo1)
-            onInputRefresh(campo2)
-            onInputRefresh(campo3)
+            CedulaV_asignCampo(proceso2_cedula5_campo1,"Proceso2_Select1",".Proceso2_campo1")
+            CedulaV_asignCampo(proceso2_cedula5_campo2,"Proceso2_Select2",".Proceso2_campo2")
+            CedulaV_asignCampo(proceso2_cedula5_campo3,"Proceso2_Select3",".Proceso2_campo3")
+            CedulaV_asignCampo(proceso2_cedula5_campo4,"Proceso2_Select4",".Proceso2_campo4")
+            CedulaV_onInputRefresh(proceso2_cedula5_campo1)
+            CedulaV_onInputRefresh(proceso2_cedula5_campo2)
+            CedulaV_onInputRefresh(proceso2_cedula5_campo3)
+            CedulaV_onInputRefresh(proceso2_cedula5_campo4)
             
         })
         if(localStorage.getItem("Select1") != null){
-            onRefresh(campo1)
-            onRefresh(campo2)
-            onRefresh(campo3)
+            CedulaV_onRefresh(proceso2_cedula5_campo1)
+            CedulaV_onRefresh(proceso2_cedula5_campo2)
+            CedulaV_onRefresh(proceso2_cedula5_campo3)
+            CedulaV_onRefresh(proceso2_cedula5_campo4)
         }
     })
 
-    nullAux.forEach(element =>{
+    proceso2_cedula5_nullAux.forEach(element =>{
         localStorage.removeItem(element)
     })
-    onInputRefresh(campo1)
-    onInputRefresh(campo2)
-    onInputRefresh(campo3)
+    proceso2_cedula5_nullAux2.forEach(element =>{
+        localStorage.removeItem(element)
+    })
+    proceso2_cedula5_nullAux3.forEach(element =>{
+        localStorage.removeItem(element)
+    })
+    proceso2_cedula5_nullAux4.forEach(element =>{
+        localStorage.removeItem(element)
+    })
+
+
+    CedulaV_onRefresh(proceso2_cedula5_campo1)
+    CedulaV_onRefresh(proceso2_cedula5_campo2)
+    CedulaV_onRefresh(proceso2_cedula5_campo3)
+    CedulaV_onRefresh(proceso2_cedula5_campo4)
 
     
-    onInput(campo1)
-    onInput(campo2)
-    onInput(campo3)
+    CedulaV_onInput(proceso2_cedula5_campo1)
+    CedulaV_onInput(proceso2_cedula5_campo2)
+    CedulaV_onInput(proceso2_cedula5_campo3)
+    CedulaV_onInput(proceso2_cedula5_campo4)
 }
 
 /*
     Metodo para calcular los resultados calculables cuando haya un evento de tipo input en los elementos <input>
 */
-function onInput(campo){
+function CedulaV_onInput(campo){
     campo.forEach(element =>{
         document.getElementById(element).addEventListener('input', () =>{
             const field1 = document.getElementById(campo[0]).value
@@ -245,7 +260,7 @@ function onInput(campo){
             const field4 = document.getElementById(campo[3]).value
             let  field5 = document.getElementById(campo[4])
             if(field1 != null && field2 != null){
-                field3.value = (field1 * field2).toFixed(4)
+                field3.value = formatNumber(field1 * field2)
                 localStorage.setItem(campo[2], Math.floor(field1 * field2))
             }else field3.value = '-'
 
@@ -267,14 +282,14 @@ function onInput(campo){
 /*
     Metodo para calcular los resultados cuando el boton Cedula I haya sido presionado
 */
-function onInputRefresh(campo){
+function CedulaV_onInputRefresh(campo){
     const field1 = document.getElementById(campo[0]).value
     const field2 = document.getElementById(campo[1]).value
     let  field3 = document.getElementById(campo[2])
     const field4 = document.getElementById(campo[3]).value
     let  field5 = document.getElementById(campo[4])
     if(field1 != null && field2 != null){
-        field3.value = field1 * field2
+        field3.value = formatNumber(field1 * field2)
     }else field3.value = '-'
 
     if(field3 != '-' && field4 != null){
@@ -295,7 +310,7 @@ function onInputRefresh(campo){
     Metodo para crear un Item en localStorage para todos los inputs de manera automatica
 */
 
-function onRefresh(campo){
+function CedulaV_onRefresh(campo){
     campo.forEach(element => {
         document.getElementById(element).value = localStorage.getItem(element)
     })
@@ -305,10 +320,10 @@ function onRefresh(campo){
     Metodo para actualizar los items de los inputs cuando haya un evento de tipo input
  */
 
-function onChange(campo){
+function CedulaV_onChange(campo){
     campo.forEach(element => {
         document.getElementById(element).addEventListener('input',()=>{
-            if(!nullAux1.includes(campo[0]) && !nullAux2.includes(campo[0]) && !nullAux3.includes(campo[0])){
+            if(!proceso2_cedula5_nullAux1.includes(campo[0]) && !proceso2_cedula5_nullAux2.includes(campo[0]) && !proceso2_cedula5_nullAux3.includes(campo[0])){
                 localStorage.setItem(element,document.getElementById(element).value)
             }
         })
@@ -318,16 +333,16 @@ function onChange(campo){
     Metodo para asignarles de forma automatica el id a los inputs de acuerdo al option seleccionado, ademas de inicializar el 
     item en localStorage con key igual a su id
 */
-function asignCampo(campo,Select,campoClass){
+function CedulaV_asignCampo(campo,Select,campoClass){
     let j = 0
     for(let i = 0; i < campo.length; i++){
-        campo[i] = "cedula1" + localStorage.getItem(Select) + Number(i+1)
+        campo[i] = "cedula5" + localStorage.getItem(Select) + Number(i+1)
     }
     if(localStorage.getItem(campo[0]) == null){
         document.querySelectorAll(campoClass).forEach(element =>{
             element.setAttribute("id",campo[j])
             
-            if(!nullAux1.includes(campo[0]) && !nullAux2.includes(campo[0]) && !nullAux3.includes(campo[0])){
+            if(!proceso2_cedula5_nullAux1.includes(campo[0]) && !proceso2_cedula5_nullAux2.includes(campo[0]) && !proceso2_cedula5_nullAux3.includes(campo[0])){
                 localStorage.setItem(campo[j],element.value)
             }else{
                 element.value = ''
@@ -349,10 +364,8 @@ function asignCampo(campo,Select,campoClass){
             }
         })
     }
-    onChange(campo)
+    CedulaV_onChange(campo)
 }
-
-
 
 /*
     Metodo para no aceptar numeros negativos ni numeros mayores a 0 para el grado de avance
@@ -367,4 +380,8 @@ function enforceMinMax(element) {
             element.value = 0;
         }
     }
+}
+
+function formatNumber(num) {
+  return parseFloat(num.toFixed(4));
 }

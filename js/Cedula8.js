@@ -37,10 +37,22 @@ function CedulaVIII(){
         </tbody>
     </table>`
     
-    let cedula8_unidadesTerminadas = localStorage.getItem("cedula5MPD4") == null ? 0 : localStorage.getItem("cedula5MPD4")
-    let cedula8_costoUnitario = localStorage.getItem("cedula7Total5") == null ? 0 : localStorage.getItem("cedula7Total5")
-    document.getElementById("unidadesTerminadas").value = cedula8_unidadesTerminadas
-    document.getElementById("costoUnitario").value = costoUnitario == "Infinity" ? 0 : costoUnitario
-    let resultado = Number(unidadesTerminadas) * Number(costoUnitario)
-    document.getElementById("costoProduccionTerminada").value = resultado == "Infinity" ? 0 : resultado
+    const cedula8_keys = ["cedula5MPD4", "cedula5MOD4", "cedula5CI4", "cedula5SP4"];
+    let cedula8_unidadesTerminadas = "0";
+
+    for (let key of cedula8_keys) {
+        let val = localStorage.getItem(key);
+        if (val != null && val.trim() != "") {
+            cedula8_unidadesTerminadas = val;
+            break;
+        }
+    }
+
+    let cedula8_costoUnitario = localStorage.getItem("cedula6Total5") == null ? 0 : localStorage.getItem("cedula6Total5")
+    document.getElementById("cedula8_unidadesTerminadas").value = cedula8_unidadesTerminadas
+    document.getElementById("cedula8_costoUnitario").value = cedula8_costoUnitario == "Infinity" ? 0 : cedula8_costoUnitario
+    let resultado = formatNumber(Number(cedula8_unidadesTerminadas) * Number(cedula8_costoUnitario))
+    document.getElementById("cedula8_costoProduccionTerminada").value = resultado == "Infinity" ? 0 : resultado
+
+    
 }

@@ -1,6 +1,7 @@
 window.addEventListener("DOMContentLoaded", () => {
     if(localStorage.getItem("currentCedula") == null){
         CedulaI()
+        CedulaV()
     }else{
         switch(localStorage.getItem("currentCedula")){
             case "CedulaI":
