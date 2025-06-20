@@ -160,6 +160,7 @@ function CedulaII(){
                 option.disabled = false
             }
         })
+        
         cedula2_asignCampo(cedula2_campo1,"cedula2_Select1",".cedula2_1")
         cedula2_asignCampo(cedula2_campo2,"cedula2_Select2",".cedula2_2")
         cedula2_asignCampo(cedula2_campo3,"cedula2_Select3",".cedula2_3")
@@ -177,7 +178,7 @@ function CedulaII(){
             values = Array.from(selects).map(s => s.value)
             document.querySelectorAll(".cedula2_mySelected").forEach(element =>{
                 [...element.options].forEach(option =>{
-                    if(values.includes(option.value) && option.value != '0' && !element.value.includes(option.value)){
+                    if(values.includes(option.value) && option.value != '0a' && option.value != '0b' && option.value != '0c' && !element.value.includes(option.value)){
                         option.disabled = true
                     }
                     else{
@@ -212,6 +213,7 @@ function CedulaII(){
     cedula2_onInput(cedula2_campo1,"cedula2_Select1")
     cedula2_onInput(cedula2_campo2,"cedula2_Select2")
     cedula2_onInput(cedula2_campo3,"cedula2_Select3")
+
 }
 
 function cedula2_onInput(campo,Select){
@@ -225,9 +227,12 @@ function cedula2_onInput(campo,Select){
             let  field5 = document.getElementById(campo[4])
             if(field1 != null && field2 != null){
                 field3.value = Number(field1) + Number(field2)
+                localStorage.setItem(campo[2],Number(field1) + Number(field2))
             }else if(field1 != null && field2 == null){
+                localStorage.setItem(campo[2],Number(field1))
                 field3.value = field1 
             }else if(field1 == null && field2 != null){
+                localStorage.setItem(campo[2], Number(field2))
                 field3.value = field2
             }
             if(UnidadesTerminadas != null){
@@ -235,8 +240,18 @@ function cedula2_onInput(campo,Select){
                 localStorage.setItem(campo[3],UnidadesTerminadas)
             }
             if(field4.value != null && field3.value != null){
-                field5.value = (Number(field3.value) / Number(field4.value)).toFixed(4)
-                localStorage.setItem(campo[4], (Number(field3.value) / Number(field4.value)).toFixed(4))
+                let resultAux
+                if(Number(field3.value) / Number(field4.value) == "Infinity"){
+                    resultAux = 0
+                }else{
+                    resultAux = (Number(field3.value) / Number(field4.value)).toFixed(4)
+                }
+                if(isNaN(resultAux)){
+                    resultAux = 0
+                    
+                }
+                field5.value = resultAux
+                localStorage.setItem(campo[4], resultAux)
             }
             cedula2_calculateTotales()
         })
@@ -267,8 +282,18 @@ function cedula2_onInputRefresh(campo,Select){
         localStorage.setItem(campo[3],UnidadesTerminadas)
     }
     if(field4 != null && field3 != null){
-        field5.value = (Number(field3.value) / Number(field4.value)).toFixed(4)
-        localStorage.setItem(campo[4], (Number(field3.value) / Number(field4.value)).toFixed(4))
+        let resultAux
+        if(Number(field3.value) / Number(field4.value) == "Infinity"){
+            resultAux = 0
+        }else{
+            resultAux = (Number(field3.value) / Number(field4.value)).toFixed(4)
+        }
+        if(isNaN(resultAux)){
+            resultAux = 0
+            
+        }
+        field5.value = resultAux
+        localStorage.setItem(campo[4], resultAux)
     }
     cedula2_calculateTotales()
 }
@@ -280,12 +305,25 @@ function cedula2_calculateTotales(){
         let monto1 = localStorage.getItem(cedula2_campo1[i])
         let monto2 = localStorage.getItem(cedula2_campo2[i])
         let monto3 = localStorage.getItem(cedula2_campo3[i])
-        if(element != "cedula2Total4"){
+        if(element != "cedula2Total4" && element != "cedula2Total3"){
+            resultado = !isNaN(monto1) ? Number(monto1) : 0
+            resultado += !isNaN(monto2) ? Number(monto2) : 0 
+            resultado += !isNaN(monto3) ? Number(monto3) : 0
+            console.log(element)
+            document.getElementById(element).value =  resultado
+            localStorage.setItem(element,resultado)
+        }else if(element == "cedula2Total3"){
+            
+            monto1 = localStorage.getItem(cedula2_campo1[i])
+            monto2 = localStorage.getItem(cedula2_campo2[i])
+            monto3 = localStorage.getItem(cedula2_campo3[i])
+            
             resultado = !isNaN(monto1) ? Number(monto1) : 0
             resultado += !isNaN(monto2) ? Number(monto2) : 0 
             resultado += !isNaN(monto3) ? Number(monto3) : 0
             document.getElementById(element).value =  resultado
             localStorage.setItem(element,resultado)
+
         }
         i++
     })

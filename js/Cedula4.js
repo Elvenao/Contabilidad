@@ -44,9 +44,10 @@ function CedulaIV(){
     }
 
 
-    let costoUnitario = localStorage.getItem("cedula2Total5") == null ? 0 : localStorage.getItem("cedula2Total5")
+    let costoUnitario = localStorage.getItem("cedula2Total5") == null ? 0 : formatNumber(localStorage.getItem("cedula2Total5"))
+
     document.getElementById("unidadesTerminadas").value = unidadesTerminadas
     document.getElementById("costoUnitario").value = costoUnitario == "Infinity" ? 0 : costoUnitario
-    let resultado = Number(unidadesTerminadas) * Number(costoUnitario)
+    let resultado = formatNumber(Number(unidadesTerminadas) * Number(costoUnitario))
     document.getElementById("costoProduccionTerminada").value = resultado == "Infinity" ? 0 : resultado
 }

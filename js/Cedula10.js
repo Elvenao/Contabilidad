@@ -25,7 +25,7 @@ function CedulaX(){
         <div class="inputs" >Importe</div>
 
         <input class="inputs" id="cedula10_unidadesVendidas1" type="number" placeholder="-" readonly>
-        <input class="inputs" id="cedula10_precioDeVenta" type="number" placeholder="Escribe algo" oninput="enforceNegatives(this)" onkeydown="notDoubleMinus(this)">
+        <input class="inputs" id="cedula10_precioDeVenta" type="number" placeholder="Escribe algo" oninput="enforceNegatives(this)" onkeydown="enforceNegatives(this)">
         <input class="inputs" id="cedula10_ImporteVenta1" type="number" placeholder="-" readonly>
         </div>
     </div>

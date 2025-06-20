@@ -47,3 +47,8 @@ window.addEventListener("DOMContentLoaded", () => {
     }
     
 })
+
+if(localStorage.getItem("cedula10_ImporteVenta1") != null){
+    document.getElementById("Btn1").removeAttribute("disabled")
+}
+

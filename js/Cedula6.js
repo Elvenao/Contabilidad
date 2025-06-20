@@ -7,6 +7,7 @@ let cedula6_nullAux = ['cedula6null1', 'cedula6null2', 'cedula6null3', 'cedula6n
 let cedula6_nullAux1 = ['cedula60a1', 'cedula60a2', 'cedula60a3', 'cedula60a4', 'cedula60a5']
 let cedula6_nullAux2 = ['cedula60b1', 'cedula60b2', 'cedula60b3', 'cedula60b4', 'cedula60b5']
 let cedula6_nullAux3 = ['cedula60c1', 'cedula60c2', 'cedula60c3', 'cedula60c4', 'cedula60c5']
+let cedula6_nullAux4 = ['cedula60d1', 'cedula60d2', 'cedula60d3', 'cedula60d4', 'cedula60d5']
 
 function CedulaVI(){
     localStorage.setItem("currentCedulaProceso2", "CedulaVI")
@@ -169,8 +170,8 @@ function CedulaVI(){
         </tbody>
     </table>`
 
-    const selects = document.querySelectorAll(".cedula6_mySelected");
-    selects.forEach(select => {
+    const cedula6_selects = document.querySelectorAll(".cedula6_mySelected");
+    cedula6_selects.forEach(select => {
         const storedValue = localStorage.getItem(select.id);
         if (storedValue !== null) {
             // Quitar selected actual
@@ -186,9 +187,9 @@ function CedulaVI(){
         }
     });
     
-    selects.forEach(select => {
+    cedula6_selects.forEach(select => {
         localStorage.setItem(select.id, select.value)
-        values = Array.from(selects).map(s => s.value);
+        values = Array.from(cedula6_selects).map(s => s.value);
         [...select.options].forEach(option =>{
             if(values.includes(option.value) && option.value != '01a' && option.value != '01b' && option.value != '01c' && option.value != '01d' && !select.value.includes(option.value)){
                 option.disabled = true
@@ -212,7 +213,7 @@ function CedulaVI(){
             seleccionado.setAttribute("selected", "selected");
 
 
-            values = Array.from(selects).map(s => s.value)
+            values = Array.from(cedula6_selects).map(s => s.value)
             document.querySelectorAll(".cedula6_mySelected").forEach(element =>{
                 [...element.options].forEach(option =>{
                     if(values.includes(option.value) && option.value != '01a' && option.value != '01b' && option.value != '01c' && option.value != '01d' && !element.value.includes(option.value)){
@@ -245,6 +246,17 @@ function CedulaVI(){
         localStorage.removeItem(element)
     })
 
+    cedula6_nullAux2.forEach(element =>{
+        localStorage.removeItem(element)
+    })
+    cedula6_nullAux3.forEach(element =>{
+        localStorage.removeItem(element)
+    })
+    cedula6_nullAux4.forEach(element =>{
+        localStorage.removeItem(element)
+    })
+
+
     cedula6_onInputRefresh(cedula6_campo1,"cedula6_Select1")
     cedula6_onInputRefresh(cedula6_campo2,"cedula6_Select2")
     cedula6_onInputRefresh(cedula6_campo3,"cedula6_Select3")
@@ -268,9 +280,12 @@ function cedula6_onInput(campo,Select){
             let  field5 = document.getElementById(campo[4])
             if(field1 != null && field2 != null){
                 field3.value = Number(field1) + Number(field2)
+                localStorage.setItem(campo[2],Number(field1) + Number(field2))
             }else if(field1 != null && field2 == null){
+                localStorage.setItem(campo[2],Number(field1))
                 field3.value = field1 
             }else if(field1 == null && field2 != null){
+                localStorage.setItem(campo[2], Number(field2))
                 field3.value = field2
             }
             if(UnidadesTerminadas != null){
@@ -278,8 +293,14 @@ function cedula6_onInput(campo,Select){
                 localStorage.setItem(campo[3],UnidadesTerminadas)
             }
             if(field4.value != null && field3.value != null){
-                field5.value = (Number(field3.value) / Number(field4.value)).toFixed(4)
-                localStorage.setItem(campo[4], (Number(field3.value) / Number(field4.value)).toFixed(4))
+                let resultAux
+                if((Number(field3.value) / Number(field4.value)) == "Infinity"){
+                    resultAux = 0
+                }else{
+                    resultAux = (Number(field3.value) / Number(field4.value))
+                }
+                field5.value = resultAux
+                localStorage.setItem(campo[4], resultAux)
             }
             cedula6_calculateTotales()
         })
@@ -289,7 +310,7 @@ function cedula6_onInput(campo,Select){
 
 
 function cedula6_onInputRefresh(campo,Select){
-    console.log(document.getElementById(Select).value)
+    
     let UnidadesTerminadas = localStorage.getItem("cedula5"+document.getElementById(Select).value+"5")
     const field1 = document.getElementById(campo[0]).value
     const field2 = document.getElementById(campo[1]).value
@@ -311,8 +332,14 @@ function cedula6_onInputRefresh(campo,Select){
         localStorage.setItem(campo[3],UnidadesTerminadas)
     }
     if(field4 != null && field3 != null){
-        field5.value = (Number(field3.value) / Number(field4.value)).toFixed(4)
-        localStorage.setItem(campo[4], (Number(field3.value) / Number(field4.value)).toFixed(4))
+        let resultAux
+        if(Number(field3.value) / Number(field4.value) == "Infinity"){
+            resultAux = 0
+        }else{
+            resultAux = (Number(field3.value) / Number(field4.value)).toFixed(4)
+        }
+        field5.value = resultAux
+        localStorage.setItem(campo[4], resultAux)
     }
     cedula6_calculateTotales()
 }
@@ -346,7 +373,7 @@ function cedula6_onRefresh(campo){
 function cedula6_onChange(campo){
     campo.forEach(element => {
         document.getElementById(element).addEventListener('input',()=>{
-            if(!cedula6_nullAux1.includes(campo[0]) && !cedula6_nullAux2.includes(campo[0]) && !cedula6_nullAux3.includes(campo[0])){
+            if(!cedula6_nullAux1.includes(campo[0]) && !cedula6_nullAux2.includes(campo[0]) && !cedula6_nullAux3.includes(campo[0]) && !cedula6_nullAux4.includes(campo[0])){
                 localStorage.setItem(element,document.getElementById(element).value)
             }
         })
@@ -362,7 +389,7 @@ function cedula6_asignCampo(campo,Select,campoClass){
         document.querySelectorAll(campoClass).forEach(element =>{
             element.setAttribute("id",campo[j])
             
-            if(!cedula6_nullAux1.includes(campo[0]) && !cedula6_nullAux2.includes(campo[0]) && !cedula6_nullAux3.includes(campo[0])){
+            if(!cedula6_nullAux1.includes(campo[0]) && !cedula6_nullAux2.includes(campo[0]) && !cedula6_nullAux3.includes(campo[0]) && !cedula6_nullAux4.includes(campo[0])){
                 localStorage.setItem(campo[j],element.value)
             }else{
                 element.value = ''
@@ -377,6 +404,7 @@ function cedula6_asignCampo(campo,Select,campoClass){
         })
         campo.forEach(element => {
             if(localStorage.getItem(element) === null){
+                console.log("GOLADFLADf")
                 document.getElementById(element).value = '' ;
             }else{
                 document.getElementById(element).value = localStorage.getItem(element);

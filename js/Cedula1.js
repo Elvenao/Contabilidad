@@ -210,9 +210,9 @@ function onInput(campo){
             if(field1 != null && field2 != null){
                 field3.value = formatNumber(field1 * field2)
                 localStorage.setItem(campo[2], formatNumber(field1 * field2))
-            }else field3.value = '-'
+            }else field3.value = '0'
 
-            if(field3 != '-' && field4 != null){
+            if(field3 != '0' && field4 != null){
                 field5.value = Number(field3.value) + Number(field4)
                 localStorage.setItem(campo[4], Number(field3.value) + Number(field4))
             }else if(field4 != null){
@@ -222,7 +222,7 @@ function onInput(campo){
                 field5.value = Number(field3.value)
                 localStorage.setItem(campo[4], Number(field3.value))
             }else{
-                field5.value = '-'
+                field5.value = '0'
             }
         })
     })
