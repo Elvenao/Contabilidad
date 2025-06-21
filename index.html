@@ -18,47 +18,79 @@
     <h1 class="text-center">Costos</h1>
     <h2 class="text-center">Proceso 1</h2>
     
-    <div class="container d-flex flex-column align-items-center">
-  <div class="cedulas d-flex flex-wrap justify-content-center mb-3 gap-1">
-    <button class="btn" id="cedula1" onclick="CedulaI()" title="Cédula I. Determinacion de Unidades Equivalentes">Cédula I. Determinacion de Unidades Equivalentes</button>
-    <button class="btn " id="cedula2" onclick="CedulaII()" title="Cédula II. Determinacion del Costo Unitario">Cédula II. Determinacion del Costo Unitario</button>
-    <button class="btn" id="cedula3" onclick="CedulaIII()" title="Cédula III. Valuación de la Producción en Proceso">Cédula III. Valuación de la Producción en Proceso</button>
-    <button class="btn" id="cedula4" onclick="CedulaIV()" title="Cédula IV. Valuación de la Producción Terminada">Cédula IV. Valuación de la Producción Terminada</button>
-  </div>
+  <div class="container d-flex flex-column align-items-center">
+    <div class="cedulas d-flex flex-wrap justify-content-center mb-3 gap-1">
+      <button class="btn" id="cedula1" onclick="CedulaI()" title="Cédula I. Determinacion de Unidades Equivalentes">Cédula I. Determinacion de Unidades Equivalentes</button>
+      <button class="btn " id="cedula2" onclick="CedulaII()" title="Cédula II. Determinacion del Costo Unitario">Cédula II. Determinacion del Costo Unitario</button>
+      <button class="btn" id="cedula3" onclick="CedulaIII()" title="Cédula III. Valuación de la Producción en Proceso">Cédula III. Valuación de la Producción en Proceso</button>
+      <button class="btn" id="cedula4" onclick="CedulaIV()" title="Cédula IV. Valuación de la Producción Terminada">Cédula IV. Valuación de la Producción Terminada</button>
+    </div>
 
-  <div id="content" class="border p-3 d-flex justify-content-center align-items-center" style="min-height: 400px; width:100%;">
-    <!-- contenido dinámico aquí -->
-  </div>
-  <h2 class="text-center">Proceso 2</h2>
-  <div class="cedulas d-flex flex-wrap justify-content-center mb-3 gap-1">
-    <button class="btn" id="cedula5" onclick="CedulaV()" title="Cédula V. Determinacion de Unidades Equivalentes">Cédula V. Determinacion de Unidades Equivalentes</button>
-    <button class="btn " id="cedula6" onclick="CedulaVI()" title="Cédula VI. Determinacion del Costo Unitario">Cédula VI. Determinacion del Costo Unitario</button>
-    <button class="btn" id="cedula7" onclick="CedulaVII()" title="Cédula VII. Valuación de la Producción en Proceso">Cédula VII. Valuación de la Producción en Proceso</button>
-    <button class="btn" id="cedula8" onclick="CedulaVIII()" title="Cédula VIII. Valuación de la Producción Terminada">Cédula VIII. Valuación de la Producción Terminada</button>
-    <button class="btn" id="cedula9" onclick="CedulaIX()" title="Cédula IX. Valuación del Inventario Final de Producción Terminada">Cédula IX. Valuación del Inventario Final de Producción Terminada</button>
-    <button class="btn" id="cedula10" onclick="CedulaX()" title="Cédula X. Ventas y Costo de lo Vendido">Cédula X. Ventas y Costo de lo Vendido</button>
-  </div>
+    <div id="content" class="border p-3 d-flex justify-content-center align-items-center" style="min-height: 400px; width:100%;">
+      <!-- contenido dinámico aquí -->
+    </div>
+    <h2 class="text-center">Proceso 2</h2>
+    <div class="cedulas d-flex flex-wrap justify-content-center mb-3 gap-1">
+      <button class="btn" id="cedula5" onclick="CedulaV()" title="Cédula V. Determinacion de Unidades Equivalentes">Cédula V. Determinacion de Unidades Equivalentes</button>
+      <button class="btn " id="cedula6" onclick="CedulaVI()" title="Cédula VI. Determinacion del Costo Unitario">Cédula VI. Determinacion del Costo Unitario</button>
+      <button class="btn" id="cedula7" onclick="CedulaVII()" title="Cédula VII. Valuación de la Producción en Proceso">Cédula VII. Valuación de la Producción en Proceso</button>
+      <button class="btn" id="cedula8" onclick="CedulaVIII()" title="Cédula VIII. Valuación de la Producción Terminada">Cédula VIII. Valuación de la Producción Terminada</button>
+      <button class="btn" id="cedula9" onclick="CedulaIX()" title="Cédula IX. Valuación del Inventario Final de Producción Terminada">Cédula IX. Valuación del Inventario Final de Producción Terminada</button>
+      <button class="btn" id="cedula10" onclick="CedulaX()" title="Cédula X. Ventas y Costo de lo Vendido">Cédula X. Ventas y Costo de lo Vendido</button>
+    </div>
 
-  <div id="content2" class="border p-3 d-flex justify-content-center align-items-center" style="min-height: 400px; width:100%;">
-    <!-- contenido dinámico aquí -->
-  </div>
-  <div style="padding-top: 6vh; padding-bottom: 6vh">
-    <button class="btn btn-primary" disabled id="Btn1">
-      Calcular Estado de Costos de Producción y de lo Vendido
-    </button>
-    <button class="btn btn-primary" disabled id="Btn2">
-      Calcular Estado de Resultados
-    </button>
-  </div>
+    <div id="content2" class="border p-3 d-flex justify-content-center align-items-center" style="min-height: 400px; width:100%;">
+      <!-- contenido dinámico aquí -->
+    </div>
+    <div>
+      <h1 class="text-center">Datos Adicionales</h1>
+      <div>
+        <label class="inputs title" for="companyName">Nombre de la Compañia</label>
+        <input style="margin-bottom: 3vh;" class="inputs" type="text" placeholder="Nombre de la compañia" name="companyName" id="companyName">
+        <label class="inputs title" for="initialDate">Fecha Inicial</label>
+        <input style="margin-bottom: 3vh;" class="inputs" type="date" placeholder="Nombre de la compañia" name="initialDate" id="initialDate">
+        <label class="inputs title" for="finalDate">Fecha Final</label>
+        <input style="margin-bottom: 3vh;" class="inputs" type="date" placeholder="Nombre de la compañia" name="finalDate" id="finalDate">
+        <label class="inputs title" for="inventarioInicialMP">Inventario Inicial de Materia Prima (Opcional)</label>
+        <input style="margin-bottom: 3vh;" class="inputs" type="number" placeholder="Inventario Inicial de Materia Prima (Opcional)" name="inventarioInicialMP" id="inventarioInicialMP" onkeydown="enforceNegatives(this)">
+        <label class="inputs title" for="comprasNetas">Compras Netas de Materia Prima(Opcional)</label>
+        <input style="margin-bottom: 3vh;" class="inputs" type="number" placeholder="Compras Netas de Materia Prima (Opcional)" name="comprasNetas" id="comprasNetas" onkeydown="enforceNegatives(this)">
+        <label class="inputs title" for="comprasNetas">Inventario Inicial de la Producción Terminada (Opcional)</label>
+        <input style="margin-bottom: 3vh;" class="inputs" type="number" placeholder="Inventario Inicial de la Producción Terminada (Opcional)" name="comprasNetas" id="inventarioInicialPT" onkeydown="enforceNegatives(this)">
+        <label class="inputs title" for="gastos">Gastos Generales o Gastos de Administración y Gastos de Ventas</label>
+        <Select style="margin-bottom: 3vh;" class="inputs" id="gastosSelect" name="gastos">
+          <option selected value="0">Gastos Generales</option>
+          <option value="1">Gastos de Administración y de Ventas</option>
+        </Select>
+        <div id="gastosContent">
+
+        </div>
+        
+
+        <label class="inputs title" for="elaborador">Nombre de quien elaboró</label>
+        <input style="margin-bottom: 3vh;" class="inputs" type="text" placeholder="Nombre de la compañia" name="elaborador" id="elaborador">
+        <label class="inputs title" for="supervisor">Nombre de quien supervisó</label>
+        <input style="margin-bottom: 3vh;" class="inputs" type="text" placeholder="Nombre de la compañia" name="supervisor" id="supervisor">
+
+      </div>
+    </div>
+    <div style="padding-top: 6vh; padding-bottom: 6vh">
+      <button class="btn btn-primary" disabled id="Btn1" onclick="Btn1()">
+        Calcular Estado de Costos de Producción y de lo Vendido
+      </button>
+      <button class="btn btn-primary" disabled id="Btn2" onclick="Btn2()">
+        Calcular Estado de Resultados
+      </button>
+    </div>
   
-  
-</div>
+  </div>
     <script src="utils/jquery/jquery-3.7.1.min.js"></script>
     <script src="utils/datatables/jquery.dataTables.min.js"></script>
     <script src="utils/bootstrap/bootstrap.bundle.min.js"></script>
     <script src="utils/datatables/datatables.min.js"></script>
     <script src="utils/sweetAlert2/sweetalert2.min.js"></script>
     <script src="utils/jspdf/jspdf.umd.min.js"></script>
+    <script src="utils/cloudflare/ARIAL-normal.js"></script>
     <script src="js/main.js" ></script>
     <script src="js/Cedula1.js" ></script>
     <script src="js/Cedula2.js" ></script>
@@ -70,9 +102,8 @@
     <script src="js/Cedula8.js" ></script>
     <script src="js/Cedula9.js" ></script>
     <script src="js/Cedula10.js" ></script>
-    <script>
-    
-</script>
-</body>
+    <script src="utils/cloudflare/html2canvas.min.js"></script>
+
+  </body>
 
 </html>

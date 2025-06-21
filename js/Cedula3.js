@@ -221,4 +221,5 @@ function cedula3_CalculateTotal(){
     resultado += !isNaN(monto2) ? Number(monto2) : 0 
     resultado += !isNaN(monto3) ? Number(monto3) : 0
     document.getElementById("cedula3Total").value =  resultado
+    localStorage.setItem("cedula3Total", resultado)
 }
