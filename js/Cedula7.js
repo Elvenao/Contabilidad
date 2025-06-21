@@ -221,8 +221,9 @@ function cedula7_asignCampo(campo,Select,campoClass){
                 }else if(j == 1){
                     element.value = localStorage.getItem("cedula6"+ document.getElementById(Select).value + "5")
                 }else{
-                    element.value = Number(localStorage.getItem("cedula5"+ document.getElementById(Select).value + "3")) * Number(localStorage.getItem("cedula6"+ document.getElementById(Select).value + "5"))
-                    localStorage.setItem(element.id, Number(localStorage.getItem("cedula5"+ document.getElementById(Select).value + "3")) * Number(localStorage.getItem("cedula6"+ document.getElementById(Select).value + "5")) )
+                    resultado = Number(localStorage.getItem("cedula5"+ document.getElementById(Select).value + "3")) * Number(localStorage.getItem("cedula6"+ document.getElementById(Select).value + "5"))
+                    element.value = formatNumber(resultado)
+                    localStorage.setItem(element.id, formatNumber(resultado))
                 }
             }else{
                 element.value = ''

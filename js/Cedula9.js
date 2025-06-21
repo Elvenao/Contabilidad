@@ -57,8 +57,11 @@ function CedulaIX(){
         }
     }
     document.getElementById("cedula9_unidadesTerminadas").value = cedula9_unidadesTerminadas
+    
     if(localStorage.getItem("cedula9_unidadesVendidas") != null){
-        document.getElementById("cedula9_unidadesVendidas").value = localStorage.getItem("cedula9_unidadesVendidas")
+        let unidadesVendidas = Number(localStorage.getItem("cedula9_unidadesVendidas")) > cedula9_unidadesTerminadas ? 0 : Number(localStorage.getItem("cedula9_unidadesVendidas"))
+        localStorage.setItem("cedula9_unidadesVendidas",unidadesVendidas)
+        document.getElementById("cedula9_unidadesVendidas").value = unidadesVendidas
     }
     document.getElementById("cedula9_unidadesVendidas").addEventListener('input',function(){
         localStorage.setItem("cedula9_unidadesVendidas",this.value)

@@ -150,13 +150,33 @@ function Btn1(){
     doc.text("=Producción Terminada Disponible", 20, 158+ e);
     doc.text("-Inventario Final de la Producción Terminada", 20, 165+ e);
     doc.text("=Costo de lo Vendido", 20, 172+ e);
-
+    
     const invInicialMP = localStorage.getItem("inventarioInicialMP") == null ? 0 : Number(localStorage.getItem("inventarioInicialMP"))
-    const comprasNetas = localStorage.getItem("comprasNetas") == null ? 0 : Number(localStorage.getItem("comprasNetas"))
+    let comprasNetas = localStorage.getItem("comprasNetas") == null ? 0 : Number(localStorage.getItem("comprasNetas"))
+    let inventarioFinalMP1 = 0
+    let inventarioFinalMP2 = 0
+   
+    
     const MPD1 = localStorage.getItem("cedula2MPD2") == null ? 0 : Number(localStorage.getItem("cedula2MPD2"))
     const MPD2 = localStorage.getItem("cedula6MPD2") == null ? 0 : Number(localStorage.getItem("cedula6MPD2"))
-    const MPDisponible = invInicialMP + comprasNetas
-    const InvFinalMP = MPDisponible - MPD1 - MPD2
+    let comprasNetas1 = 0
+    let comprasNetas2 = 0
+    if(comprasNetas == 0){
+        inventarioFinalMP1 = localStorage.getItem("cedula2MPD1") == null ? 0 : Number(localStorage.getItem("cedula2MPD1"))
+        inventarioFinalMP2 = localStorage.getItem("cedula6MPD1") == null ? 0 : Number(localStorage.getItem("cedula6MPD1"))
+        comprasNetas1 = MPD1 + inventarioFinalMP1
+        comprasNetas2 = MPD2 + inventarioFinalMP2
+        comprasNetas = comprasNetas1 + comprasNetas2
+        
+    }
+    
+    let MPDisponible = invInicialMP + comprasNetas
+    let InvFinalMP = MPDisponible - MPD1 - MPD2
+    if(MPDisponible == 0){
+        MPDisponible = comprasNetas
+        InvFinalMP = inventarioFinalMP1 + inventarioFinalMP2
+    } 
+    
     const MPConsumida = MPD1 + MPD2
 
     const MOD1 = localStorage.getItem("cedula2MOD2") == null ? 0 : Number(localStorage.getItem("cedula2MOD2"))
@@ -220,18 +240,18 @@ function Btn1(){
     doc.text("$" + CostoPTTotal.toLocaleString(), 112 + c, 152 -d ,{ align: "right" })
     doc.text("$" + InvInicialPT.toLocaleString() , 112+ c, 159-d,{ align: "right" })
     doc.text("________", 112+ c, 161 -d,{ align: "right" })
-    doc.text("$" + PTDisponible.toLocaleString() , 112+ c, 168-d,{ align: "right" })
-    doc.text("$" + InvFinalPT.toLocaleString() , 112+ c, 175-d,{ align: "right" })
-    doc.text("________", 112+ c, 177 -d,{ align: "right" })
-    doc.text("$" + CostoDeLoVendido.toLocaleString() , 112+ c, 182-d,{ align: "right" })
+    doc.text("$" + PTDisponible.toLocaleString() , 112+ c, 168-d-2,{ align: "right" })
+    doc.text("$" + InvFinalPT.toLocaleString() , 112+ c, 175-d-2,{ align: "right" })
+    doc.text("________", 112+ c, 177 -d-2,{ align: "right" })
+    doc.text("$" + CostoDeLoVendido.toLocaleString() , 112+ c, 182-d-2,{ align: "right" })
 
 
     //Proceso 1
     doc.text("$ 0", 153, 47,{ align: "right" })
-    doc.text("$ 0", 153, 54,{ align: "right" })
+    doc.text("$"+ comprasNetas1.toLocaleString(), 153, 54,{ align: "right" })
     doc.text("________", 153, 56,{ align: "right" })
-    doc.text("$0", 153, 61,{ align: "right" })
-    doc.text("$0", 153, 68,{ align: "right" })
+    doc.text("$"+comprasNetas1.toLocaleString(), 153, 61,{ align: "right" })
+    doc.text("$"+inventarioFinalMP1.toLocaleString(), 153, 68,{ align: "right" })
     doc.text("________", 153, 70,{ align: "right" })
     doc.text("$" + MPD1.toLocaleString(), 153, 75,{ align: "right" })
     doc.text("$" + MOD1.toLocaleString(), 153, 82,{ align: "right" })
@@ -256,10 +276,10 @@ function Btn1(){
 
     //Proceso 2
     doc.text("$ 0", 188, 47,{ align: "right" })
-    doc.text("$ 0", 188, 54,{ align: "right" })
+    doc.text("$" + comprasNetas2.toLocaleString(), 188, 54,{ align: "right" })
     doc.text("________", 188, 56,{ align: "right" })
-    doc.text("$0", 188, 61,{ align: "right" })
-    doc.text("$0", 188, 68,{ align: "right" })
+    doc.text("$" + comprasNetas2.toLocaleString(), 188, 61,{ align: "right" })
+    doc.text("$"+inventarioFinalMP2.toLocaleString(), 188, 68,{ align: "right" })
     doc.text("________", 188, 70,{ align: "right" })
     doc.text("$" + MPD2.toLocaleString(), 188, 75,{ align: "right" })
     doc.text("$" + MOD2.toLocaleString(), 188, 82,{ align: "right" })

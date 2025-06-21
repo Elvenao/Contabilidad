@@ -203,28 +203,16 @@ function CedulaI(){
 function onInput(campo){
     campo.forEach(element =>{
         document.getElementById(element).addEventListener('input', () =>{
-            const field1 = document.getElementById(campo[0]).value
-            const field2 = document.getElementById(campo[1]).value
+            const field1 = document.getElementById(campo[0]).value == null ? 0: Number(document.getElementById(campo[0]).value)
+            const field2 = document.getElementById(campo[1]).value == null ? 0: Number(document.getElementById(campo[1]).value)
             let  field3 = document.getElementById(campo[2])
-            const field4 = document.getElementById(campo[3]).value
+            const field4 = document.getElementById(campo[3]).value == null ? 0: Number(document.getElementById(campo[3]).value)
             let  field5 = document.getElementById(campo[4])
-            if(field1 != null && field2 != null){
-                field3.value = formatNumber(field1 * field2)
-                localStorage.setItem(campo[2], formatNumber(field1 * field2))
-            }else field3.value = '0'
-
-            if(field3 != '0' && field4 != null){
-                field5.value = Number(field3.value) + Number(field4)
-                localStorage.setItem(campo[4], Number(field3.value) + Number(field4))
-            }else if(field4 != null){
-                field5.value = Number(field4)
-                localStorage.setItem(campo[4], Number(field4))
-            }else if(field3.value != '-'){
-                field5.value = Number(field3.value)
-                localStorage.setItem(campo[4], Number(field3.value))
-            }else{
-                field5.value = '0'
-            }
+            
+            field3.value = formatNumber(field1 * field2)
+            localStorage.setItem(campo[2], formatNumber(field1 * field2))
+            field5.value = Number(field3.value) + Number(field4)
+            localStorage.setItem(campo[4], Number(field3.value) + Number(field4))
         })
     })
 }
@@ -232,27 +220,17 @@ function onInput(campo){
     Metodo para calcular los resultados cuando el boton Cedula I haya sido presionado
 */
 function onInputRefresh(campo){
-    const field1 = document.getElementById(campo[0]).value
-    const field2 = document.getElementById(campo[1]).value
+    const field1 = document.getElementById(campo[0]).value == null ? 0: Number(document.getElementById(campo[0]).value)
+    const field2 = document.getElementById(campo[1]).value == null ? 0: Number(document.getElementById(campo[1]).value)
     let  field3 = document.getElementById(campo[2])
-    const field4 = document.getElementById(campo[3]).value
+    const field4 = document.getElementById(campo[3]).value == null ? 0: Number(document.getElementById(campo[3]).value)
     let  field5 = document.getElementById(campo[4])
-    if(field1 != null && field2 != null){
-        field3.value = formatNumber(field1 * field2)
-    }else field3.value = '-'
-
-    if(field3 != '-' && field4 != null){
-        field5.value = Number(field3.value) + Number(field4)
-        localStorage.setItem(campo[4], Number(field3.value) + Number(field4))
-    }else if(field4 != null){
-        field5.value = Number(field4)
-        localStorage.setItem(campo[4], Number(field4))
-    }else if(field3.value != '-'){
-        field5.value = Number(field3)
-        localStorage.setItem(campo[4], Number(field3))
-    }else{
-        field5.value = '-'
-    }
+    
+    field3.value = formatNumber(field1 * field2)
+    localStorage.setItem(campo[2], formatNumber(field1 * field2))
+    field5.value = Number(field3.value) + Number(field4)
+    localStorage.setItem(campo[4], Number(field3.value) + Number(field4))
+    
 }
 
 /*
@@ -331,13 +309,28 @@ function enforceMinMax(element) {
     }
 }
 
-function unidadesTerminadasIguales(){
-    const unidadesTerminadasIguales = ["cedula1MPD4","cedula1MOD4","cedula1CI4"]
-    unidadesTerminadasIguales.forEach((element)=>{
-        document.getElementById(element).addEventListener('input',()=>{
-            document.getElementById(unidadesTerminadasIguales[0]).value = document.getElementById(element).value
-            document.getElementById(unidadesTerminadasIguales[1]).value = document.getElementById(element).value
-            document.getElementById(unidadesTerminadasIguales[2]).value = document.getElementById(element).value
-        })
-    })
+function unidadesTerminadasIguales() {
+    const unidades = ["cedula1MPD4", "cedula1MOD4", "cedula1CI4"];
+    let bloqueado = false;
+
+    unidades.forEach((element) => {
+        document.getElementById(element).addEventListener('input', () => {
+            if (bloqueado) return;
+
+            bloqueado = true;
+            const nuevoValor = document.getElementById(element).value;
+
+            unidades.forEach((otroId) => {
+                document.getElementById(otroId).value = nuevoValor;
+                localStorage.setItem(otroId, nuevoValor);
+
+                // Solo disparar input si no es el mismo que lo originó
+                if (otroId !== element) {
+                    document.getElementById(otroId).dispatchEvent(new Event("input", { bubbles: true }));
+                }
+            });
+
+            bloqueado = false;
+        });
+    });
 }
