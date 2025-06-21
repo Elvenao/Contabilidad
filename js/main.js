@@ -51,10 +51,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
 const extras = ["finalDate","initialDate","inventarioInicialPT","inventarioInicialMP","comprasNetas","supervisor","elaborador"]
 
-if(localStorage.getItem("companyName") != null && localStorage.getItem("companyName") != "undefiend"){
-    document.getElementById("companyName").value = localStorage.getItem("companyName")
-    document.getElementById("Btn1").removeAttribute("disabled")
-}
+
 
 extras.forEach(element =>{
     document.getElementById(element).addEventListener("input", ()=>{
@@ -63,6 +60,7 @@ extras.forEach(element =>{
     if(localStorage.getItem(element) != null) document.getElementById(element).value = localStorage.getItem(element)
 })
 
+/*
 document.getElementById("companyName").addEventListener("input",()=>{
     if(document.getElementById("companyName").value == "" || localStorage.getItem("cedula10_ImporteVenta1") == null){
         document.getElementById("Btn1").setAttribute("disabled","disabled")
@@ -71,15 +69,47 @@ document.getElementById("companyName").addEventListener("input",()=>{
     }
     localStorage.setItem("companyName", document.getElementById("companyName").value)
 })
+*/
+
+const datosBasicos = ["companyName","initialDate","finalDate"]
+
+datosBasicos.forEach((element)=>{
+    document.getElementById(element).addEventListener('input', ()=>{
+        localStorage.setItem(element,document.getElementById(element).value )
+    })
+    document.getElementById(element).value = localStorage.getItem(element)
+})
+
 
 document.getElementById("finalDate")
 
 function Btn1(){
+    
     const nombre = document.getElementById("companyName").value
     const estado = "Estado de Costos de Producción y de Ventas"
     const doc = new window.jspdf.jsPDF();
     let dia1 = document.getElementById("initialDate").value
     let dia2 = document.getElementById("finalDate").value
+    const elaborador = localStorage.getItem("elaborador") == null ? "" : localStorage.getItem("elaborador")
+    const supervisor = localStorage.getItem("supervisor") == null ? "" : localStorage.getItem("supervisor")
+    
+    if(localStorage.getItem("cedula10_ImporteVenta1") == null || localStorage.getItem("cedula10_ImporteVenta1") == ""){
+        Swal.fire({
+            title: "Faltan Datos",
+            text: "Completa tus cedulas",
+            icon: "warning"
+            });
+        return
+    }
+
+    if(nombre == null || nombre == "" || dia1 == null || dia1 == "" || dia2 == null || dia2 == "" || elaborador == null || elaborador == "" || supervisor == null || supervisor == ""){
+        Swal.fire({
+            title: "Faltan Datos",
+            text: "Llena los campos faltantes",
+            icon: "warning"
+            });
+        return
+    }
     dia2 = dia2.split("-")
     
     dia1 = dia1.split("-")
@@ -162,8 +192,7 @@ function Btn1(){
     const CostoDeLoVendido = PTDisponible - InvFinalPT
     localStorage.setItem("CostoDeLoVendido", CostoDeLoVendido)
 
-    const elaborador = localStorage.getItem("elaborador") == null ? "" : localStorage.getItem("elaborador")
-    const supervisor = localStorage.getItem("supervisor") == null ? "" : localStorage.getItem("supervisor")
+    
 
     //Total
     doc.text("$"+invInicialMP.toLocaleString(), 112 + c, 47,{ align: "right" })
@@ -262,7 +291,7 @@ function Btn1(){
 
     doc.save( estado + " de "+ nombre+".pdf");
     
-    document.getElementById("Btn2").removeAttribute("disabled")
+    
 }
 
 function Btn2(){
@@ -383,6 +412,15 @@ function Btn2(){
     const mes = obtenerNombreMes(document.getElementById("initialDate").value)
     const pageWidth = doc.internal.pageSize.getWidth();
     const fecha = "Del "+ dia1 + " al " + dia2 + " de " + mes + " de " + year
+
+    if(nombre == null || nombre == "" || dia1 == null || dia1 == "" || dia2 == null || dia2 == "" || elaborador == null || elaborador == "" || supervisor == null || supervisor == "" ){
+        Swal.fire({
+            title: "Faltan Datos",
+            text: "Llena los campos faltantes",
+            icon: "warning"
+            });
+        return
+    }
     doc.setFontSize(16);
     doc.text(nombre, centerPdf(nombre,pageWidth) , 10);
     doc.text(estado, centerPdf(estado,pageWidth) , 20);
@@ -424,7 +462,7 @@ function Btn2(){
             });
         }
     }else{
-        if(document.getElementById("gastosAdministracion").value != null && document.getElementById("gastosAdministracion").value != "" && document.getElementById("gastosVentas").value != null && document.getElementById("gastosVentas").value != ""){
+        if(document.getElementById("gastosAdministracion").value != null || document.getElementById("gastosAdministracion").value != "" || document.getElementById("gastosVentas").value != null || document.getElementById("gastosVentas").value != ""){
             
             doc.text("Gastos de Ventas",10,90)
             doc.text("Gastos de Administración",10,100)

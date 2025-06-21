@@ -194,6 +194,7 @@ function CedulaI(){
     onInput(campo1)
     onInput(campo2)
     onInput(campo3)
+    unidadesTerminadasIguales()
 }
 
 /*
@@ -328,4 +329,15 @@ function enforceMinMax(element) {
             element.value = 0;
         }
     }
+}
+
+function unidadesTerminadasIguales(){
+    const unidadesTerminadasIguales = ["cedula1MPD4","cedula1MOD4","cedula1CI4"]
+    unidadesTerminadasIguales.forEach((element)=>{
+        document.getElementById(element).addEventListener('input',()=>{
+            document.getElementById(unidadesTerminadasIguales[0]).value = document.getElementById(element).value
+            document.getElementById(unidadesTerminadasIguales[1]).value = document.getElementById(element).value
+            document.getElementById(unidadesTerminadasIguales[2]).value = document.getElementById(element).value
+        })
+    })
 }

@@ -249,6 +249,7 @@ function CedulaV(){
     CedulaV_onInput(cedula5_campo2)
     CedulaV_onInput(cedula5_campo3)
     CedulaV_onInput(cedula5_campo4)
+    cedula5_unidadesTerminadasIguales()
 }
 
 /*
@@ -389,4 +390,16 @@ function formatNumber(num) {
   num = Number(num); // convierte string u otro a número
   if (isNaN(num)) return 0; // o null, o lo que desees si no es válido
   return parseFloat(num.toFixed(4));
+}
+
+function cedula5_unidadesTerminadasIguales(){
+    const unidadesTerminadasIguales = ["cedula5MPD4","cedula5MOD4","cedula5CI4", "cedula5SP4"]
+    unidadesTerminadasIguales.forEach((element)=>{
+        document.getElementById(element).addEventListener('input',()=>{
+            document.getElementById(unidadesTerminadasIguales[0]).value = document.getElementById(element).value
+            document.getElementById(unidadesTerminadasIguales[1]).value = document.getElementById(element).value
+            document.getElementById(unidadesTerminadasIguales[2]).value = document.getElementById(element).value
+            document.getElementById(unidadesTerminadasIguales[3]).value = document.getElementById(element).value
+        })
+    })
 }
